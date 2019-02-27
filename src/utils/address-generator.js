@@ -15,7 +15,7 @@ export const supportedCoins = [
     'ZEC',
 ]
 
-const addressGenerator = {
+export const addressGenerator = {
     generateKeyPair,
 }
 

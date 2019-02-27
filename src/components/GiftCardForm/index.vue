@@ -14,12 +14,17 @@
             required
             placeholder="Name of the person this card is for"
           />
+          <b-form-invalid-feedback>
+            Your user ID must be 5-12 characters long.
+          </b-form-invalid-feedback>
         </b-form-group>
         <!--Note (Passphrase)-->
         <b-form-group>
           <label>Special note <b>(Passphrase)</b><small class="muted-text"> - at least 10 characters:</small></label>
           <b-form-textarea
+            rows="8"
             v-model="form.passphrase"
+            @blur="generateKeyPair"
             required
             placeholder="Leave personalized message for someone special to you"
           />
@@ -28,12 +33,17 @@
             exactly like here and keep it safe.
           </span>
         </b-form-group>
+        <b-form-group label="Coin:">
+          <b-form-select
+            v-model="form.selectedCoin"
+            :options="supportedCoins"
+          />
+        </b-form-group>
         <hr>
         <!-- Paper card radio -->
         <b-form-group label="How do you like to receive this gift card:">
-          <b-form-radio value="A" v-model="choice" name="some-radios">Paper card and digital copy</b-form-radio>
-          <b-form-radio value="B" v-model="choice" name="some-radios">Digital copy only</b-form-radio>
-        </b-form-group>
+          <b-form-radio value="PaperAndDigital" v-model="form.selectedReceiveType" name="some-radios">Paper card and digital copy</b-form-radio>
+          <b-form-radio value="Digital" v-model="form.selectedReceiveType" name="some-radios">Digital copy only</b-form-radio>
         </b-form-group>
         <!--Country-->
         <b-form-group label="Country:">
@@ -76,7 +86,9 @@ import BFormGroup from 'bootstrap-vue/src/components/form-group/form-group'
 import BFormInput from 'bootstrap-vue/src/components/form-input/form-input'
 import BFormSelect from 'bootstrap-vue/src/components/form-select/form-select'
 import BFormTextarea from 'bootstrap-vue/src/components/form-textarea/form-textarea'
-import supportedCoins from './../../utils/address-generator'
+import { addressGenerator, supportedCoins } from '../../utils/address-generator'
+import BFormInvalidFeedback from 'bootstrap-vue/src/components/form/form-invalid-feedback'
+import BFormRadio from 'bootstrap-vue/src/components/form-radio/form-radio'
 
 const designOptions = [
   {
@@ -98,22 +110,50 @@ const designOptions = [
   },
 ]
 
+const GIFT_RECEIVE_TYPE = {
+  PaperAndDigital: 'PaperAndDigital',
+  Digital: 'Digital',
+}
+
 export default {
   name: 'GiftCardForm',
-  components: {BFormTextarea, BFormSelect, BFormInput, BFormGroup, BForm},
+  components: {BFormRadio, BFormInvalidFeedback, BFormTextarea, BFormSelect, BFormInput, BFormGroup, BForm},
   data() {
     return {
       form: {
         selectedDesignOption: null,
         forWhom: '',
         passphrase: '',
-        choice: [],
+        selectedCoin: null,
+        selectedReceiveType: GIFT_RECEIVE_TYPE.PaperAndDigital,
         country: '',
         city: '',
         email: ''
       },
+      supportedCoins: [
+        {
+          value: null,
+          text: 'Please select which coin is included',
+          disabled: true
+        },
+        ...supportedCoins.map((coin) => {
+          return {
+            value: coin,
+            text: coin
+          }
+        })
+      ],
       designOptions: designOptions
     }
+  },
+  methods: {
+    generateKeyPair(event) {
+      const value = event.target.value
+      console.log(value)
+      const keyPair = addressGenerator.generateKeyPair(value)
+      console.log(keyPair)
+    },
+
   }
 }
 </script>
