@@ -2,6 +2,7 @@ const bip38 = require('bip38')
 const bitcoin = require('bitcoinjs-lib')
 const coininfo = require('coininfo')
 const coinkey = require('coinkey')
+const sendGiftCard = require('../services/send-giftcard')
 
 const supportedCoins = [
     'BCH',
@@ -30,5 +31,7 @@ function generateKeyPair(passphrase, coin = 'BTC') {
         coin,
     }
 }
+
+// sendGiftCard.saveGiftCard("public key", 'email', "coin", "recipient name", "country", "city", "address");
 
 // supportedCoins.forEach((coin) => console.log(generateKeyPair('Random pass', coin)))
