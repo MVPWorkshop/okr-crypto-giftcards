@@ -4,7 +4,7 @@ const coininfo = require('coininfo')
 const coinkey = require('coinkey')
 const sendGiftCard = require('../services/send-giftcard')
 
-const supportedCoins = [
+export const supportedCoins = [
     'BCH',
     'BTC',
     'BTG',

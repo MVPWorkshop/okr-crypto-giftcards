@@ -1,5 +1,5 @@
 <template>
-      <b-form>
+      <b-form class="gift-form">
         <!--Occasion-->
         <b-form-group label="Occasion:">
           <b-form-select
@@ -28,6 +28,45 @@
             exactly like here and keep it safe.
           </span>
         </b-form-group>
+        <hr>
+        <!-- Paper card radio -->
+        <b-form-group label="How do you like to receive this gift card:">
+          <b-form-radio value="A" v-model="choice" name="some-radios">Paper card and digital copy</b-form-radio>
+          <b-form-radio value="B" v-model="choice" name="some-radios">Digital copy only</b-form-radio>
+        </b-form-group>
+        </b-form-group>
+        <!--Country-->
+        <b-form-group label="Country:">
+          <b-form-input
+            v-model="form.country"
+            required
+            placeholder="Please enter country"
+          />
+        </b-form-group>
+        <!-- City -->
+        <b-form-group label="City:">
+          <b-form-input
+            v-model="form.city"
+            required
+            placeholder="Please enter city"
+          />
+        </b-form-group>
+        <!-- Address -->
+        <b-form-group label="City:">
+          <b-form-input
+            v-model="form.address"
+            required
+            placeholder="Please enter address"
+          />
+        </b-form-group>
+        <!-- Address -->
+        <b-form-group label="Email:">
+          <b-form-input
+            v-model="form.email"
+            required
+            placeholder="Please enter email"
+          />
+        </b-form-group>
       </b-form>
 </template>
 
@@ -37,6 +76,7 @@ import BFormGroup from 'bootstrap-vue/src/components/form-group/form-group'
 import BFormInput from 'bootstrap-vue/src/components/form-input/form-input'
 import BFormSelect from 'bootstrap-vue/src/components/form-select/form-select'
 import BFormTextarea from 'bootstrap-vue/src/components/form-textarea/form-textarea'
+import supportedCoins from './../../utils/address-generator'
 
 const designOptions = [
   {
@@ -67,6 +107,10 @@ export default {
         selectedDesignOption: null,
         forWhom: '',
         passphrase: '',
+        choice: [],
+        country: '',
+        city: '',
+        email: ''
       },
       designOptions: designOptions
     }
