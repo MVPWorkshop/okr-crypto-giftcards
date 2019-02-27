@@ -1,2 +1,7 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import '../node_modules/bootstrap-vue/src/index';
+
+.card {
+  background-color: #f8f8f8;
+  padding: 10px;
+}
