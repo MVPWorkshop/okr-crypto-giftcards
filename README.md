@@ -25,5 +25,9 @@ yarn run test
 yarn run lint
 ```
 
+### Vue Bootstrap components
+[Vue Bootstrap](https://bootstrap-vue.js.org/docs/components/alert)
+
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
