@@ -1,0 +1,9 @@
+{
+  "name": "giftcards",
+  "version": "1.0.0",
+  "description": "crypto giftcards",
+  "main": "index.js",
+  "repository": "git@github.com:MVPWorkshop/okr-crypto-giftcards.git",
+  "author": "fjovakaric <filip.jovakaric@gmail.com>",
+  "license": "MIT"
+}
