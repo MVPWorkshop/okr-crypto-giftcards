@@ -10,8 +10,8 @@
             <span class="box-title">YOUR BITCOIN WALLET</span>
             <img :src="imagesrc" class="crypto-icon">
             <span class="info-text">Check funds on your wallet via this address</span>
-            <div class="qr-holder"></div>
-            <span class="info-text" id="public-address">0x5fa8e594f1c883ddd04005eca5eff123d4679047</span>
+            <qrcode-vue size="120" :value="keyPair.publicKey" class="qr-holder"/>
+            <span class="info-text" id="public-address">{{keyPair.publicKey}}</span>
           </div>
         </div>
         <div class="card-page">
@@ -27,8 +27,8 @@
         <div class="card-page">
           <div class="wbox">
             <span class="box-title">YOUR PRIVATE KEY:</span>
-            <div class="qr-holder"></div>
-            <span id="private-key">eec86f430a466196dbd93eec1165b992aabcc958c7ce31eafe7ee9086e7004b3</span>
+            <qrcode-vue size="160" :value="keyPair.encryptedPrivateKey" class="qr-holder"/>
+            <span id="private-key">{{keyPair.encryptedPrivateKey}}</span>
             <span class="info-text">
               Please
               <strong>DO NOT</strong> Share Your Private Key With Anyone!
@@ -49,9 +49,10 @@
 </template>
 
 <script>
+import QrcodeVue from "qrcode.vue";
 export default {
   name: "Preview",
-  components: {},
+  components: { QrcodeVue },
   props: {
     form: {
       required: true,
@@ -60,6 +61,10 @@ export default {
     imagesrc: {
       required: false,
       type: String
+    },
+    keyPair: {
+      required: true,
+      type: Object
     }
   }
 };
@@ -154,13 +159,11 @@ export default {
   margin: auto;
   height: 10rem;
   width: 10rem;
-  background: yellow;
 }
 
 .back-wb .qr-holder {
   height: 7.5rem;
   width: 7.5rem;
-  background: purple;
 }
 
 .crypto-icon {
@@ -175,8 +178,8 @@ export default {
   display: block;
   width: 92%;
   margin: 1rem auto;
-  font-size: 0.75rem;
-  line-height: 1.1rem;
+  font-size: 0.75rem !important;
+  line-height: 1.1rem !important;
   text-align: center;
   color: #b8b8b8;
 }
@@ -185,20 +188,29 @@ export default {
   display: block;
   width: 85%;
   margin: 1rem auto;
-  font-size: 0.9rem;
-  line-height: 1.26rem;
+  font-size: 0.9rem !important;
+  line-height: 1.26rem !important;
   text-align: center;
+  min-height: 40px;
 }
 
 #public-address {
   color: #000;
   width: 80%;
+  min-height: 34px;
 }
 
 .card.outside,
 .card.inside {
   margin: 0;
   margin: 2rem 0;
+}
+
+.card.outside {
+  background-image: url("/bday-preview-ver2.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .for-whom {

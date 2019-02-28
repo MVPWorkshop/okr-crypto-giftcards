@@ -1,10 +1,7 @@
 import * as emailjs from "emailjs-com";
 
-const emailService = {
-  sendPassphraseEmail,
-}
 
-function sendPassphraseEmail(recipientEmail, recipientName, passphrase) {
+export function sendPassphraseEmail(recipientEmail, recipientName, passphrase) {
   emailjs.send(
     'mailgun',
     'template_MWd650oR',

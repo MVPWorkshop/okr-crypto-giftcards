@@ -23,17 +23,27 @@
       <b-form-textarea
         rows="8"
         v-model="form.passphrase"
-        @blur="generateKeyPair"
         required
         placeholder="Leave personalized message for someone special to you"
       />
       <span class="mt-1 d-block">
-        <b>IMPORTANT:</b><span class="light-text"> Receiver needs to use this passphrase to access their wallet. Please write it down
-        exactly like here and keep it safe.</span>
+        <b>IMPORTANT:</b>
+        <span class="light-text">
+          Receiver needs to use this passphrase to access their wallet. Please write it down
+          exactly like here and keep it safe.
+        </span>
       </span>
     </b-form-group>
     <b-form-group label="Coin:">
       <b-form-select v-model="form.selectedCoin" :options="supportedCoins"/>
+    </b-form-group>
+    <b-form-group>
+      <b-button
+        class="giftcard-button"
+        block
+        variant="primary"
+        @click="$emit('change-form',form)"
+      >Generate giftcard</b-button>
     </b-form-group>
     <hr>
     <!-- Paper card radio -->
@@ -66,7 +76,12 @@
       <b-form-input v-model="form.email" required placeholder="Please enter email"/>
     </b-form-group>
     <b-form-group>
-      <b-button class="giftcard-button" block variant="primary" @click="$emit('change-form',form)">Create giftcard</b-button>
+      <b-button
+        class="giftcard-button"
+        block
+        variant="primary"
+        @click="$emit('send-giftcard',form)"
+      >Send giftcard</b-button>
     </b-form-group>
   </b-form>
 </template>
@@ -130,7 +145,8 @@ export default {
         selectedReceiveType: GIFT_RECEIVE_TYPE.PaperAndDigital,
         country: "",
         city: "",
-        email: ""
+        email: "",
+        address: ""
       },
       supportedCoins: [
         {
@@ -147,7 +163,6 @@ export default {
       ],
       designOptions: designOptions
     };
-    console.log(form.selectedDesignOption);
   },
   methods: {
     generateKeyPair(event) {
@@ -162,33 +177,32 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  .muted-text {
-    opacity: 0.5;
-  }
-  
-  ::placeholder { /* Edge */
-      font-size: 0.9rem;
-      line-height: 1.5rem;
-      color: #C5C4DF
-  }
-  .gift-form {
+.muted-text {
+  opacity: 0.5;
+}
 
-    label,
-    span,
-    .col-form-label,
-    select {
-      font-size: 0.9rem !important;
-      line-height: 1.5rem !important;
-    }
-
-    .light-text{
-      color: #969696;
-      font-size: 13px;
-    }
-
-    .giftcard-button {
-      margin-top: 1rem;
-    }
+::placeholder {
+  /* Edge */
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  color: #c5c4df;
+}
+.gift-form {
+  label,
+  span,
+  .col-form-label,
+  select {
+    font-size: 0.9rem !important;
+    line-height: 1.5rem !important;
   }
 
+  .light-text {
+    color: #969696;
+    font-size: 13px;
+  }
+
+  .giftcard-button {
+    margin-top: 1rem;
+  }
+}
 </style>

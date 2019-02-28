@@ -1,4 +1,5 @@
-const axios = require('axios');
+// const axios = require('axios');
+const fetch = require('node-fetch');
 
 module.exports = {
     saveGiftCard: function (publicKey, email, coin, recipientName, country, city, address) {
@@ -11,13 +12,19 @@ module.exports = {
         postUrl += "&entry.260029024=" + city;
         postUrl += "&entry.792568688=" + address;
 
-        axios.post(postUrl)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+        const myInit = {
+            method: 'HEAD',
+            mode: 'no-cors',
+        };
 
+        const myRequest = new Request(postUrl, myInit);
+
+        fetch(myRequest).then(function (response) {
+            return response;
+        }).then(function (response) {
+            console.log(response);
+        }).catch(function (e) {
+            console.log(e);
+        });
     }
 }
