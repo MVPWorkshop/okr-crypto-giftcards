@@ -62,7 +62,7 @@
           />
         </b-form-group>
         <!-- Address -->
-        <b-form-group label="City:">
+        <b-form-group label="Address:">
           <b-form-input
             v-model="form.address"
             required
@@ -77,6 +77,9 @@
             placeholder="Please enter email"
           />
         </b-form-group>
+        <b-form-group>
+          <b-button block variant="primary">Create giftcard</b-button>
+        </b-form-group>        
       </b-form>
 </template>
 
@@ -145,15 +148,15 @@ export default {
       ],
       designOptions: designOptions
     }
+    console.log(form.selectedDesignOption)
   },
   methods: {
     generateKeyPair(event) {
       const value = event.target.value
-      console.log(value)
+      console.log(event.target.value)
       const keyPair = addressGenerator.generateKeyPair(value)
       console.log(keyPair)
     },
-
   }
 }
 </script>

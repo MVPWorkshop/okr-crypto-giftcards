@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container class="giftcard-cotainer">
     <b-row>
       <b-col md="4">
         <div class="card">
@@ -8,7 +8,7 @@
       </b-col>
       <b-col md="8">
         <div class="card">
-          <p>dasda</p>
+          <p></p>
         </div>
       </b-col>
     </b-row>
@@ -28,5 +28,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+  .giftcard-cotainer {
+    margin: 2rem;
+  }
 </style>
