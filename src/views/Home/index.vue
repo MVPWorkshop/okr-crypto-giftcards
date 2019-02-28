@@ -3,31 +3,45 @@
     <b-row>
       <b-col md="4">
         <div class="card">
-          <GiftCardForm />
+          <GiftCardForm @change-form="form = $event"/>
         </div>
       </b-col>
       <b-col md="8">
-        <Preview />
+        <Preview :form="form"/>
       </b-col>
     </b-row>
   </b-container>
 </template>
 
 <script>
-import BContainer from 'bootstrap-vue/src/components/layout/container'
-import BCol from 'bootstrap-vue/src/components/layout/col'
-import BRow from 'bootstrap-vue/src/components/layout/row'
-import GiftCardForm from '../../components/GiftCardForm/index'
-import Preview from '../../components/Preview/index'
+import BContainer from "bootstrap-vue/src/components/layout/container";
+import BCol from "bootstrap-vue/src/components/layout/col";
+import BRow from "bootstrap-vue/src/components/layout/row";
+import GiftCardForm from "../../components/GiftCardForm/index";
+import Preview from "../../components/Preview/index";
 
 export default {
-  name: 'Home',
-  components: {GiftCardForm, Preview, BRow, BCol, BContainer}
-}
+  name: "Home",
+  components: { GiftCardForm, Preview, BRow, BCol, BContainer },
+  data() {
+    return {
+      form: {
+        selectedDesignOption: null,
+        forWhom: "",
+        passphrase: "",
+        selectedCoin: null,
+        selectedReceiveType: null,
+        country: "",
+        city: "",
+        email: ""
+      }
+    };
+  }
+};
 </script>
 
 <style scoped lang="scss">
-  .giftcard-cotainer {
-    margin: 2rem;
-  }
+.giftcard-cotainer {
+  margin: 2rem;
+}
 </style>
