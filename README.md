@@ -14,3 +14,5 @@
 - EmailJS `filip.jovakaric@mvpwrokshop.co` / `Filip123`
 
 ## TODO
+- Send digital card to email
+- ETH support
