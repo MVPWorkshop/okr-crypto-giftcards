@@ -10,10 +10,10 @@ export const supportedCoins = [
     'BTC',
     'BTG',
     'DASH',
-    'DCR',
+    // 'DCR',
     'DOGE',
     'LTC',
-    'ZEC',
+    // 'ZEC',
 ]
 
 export const addressGenerator = {
