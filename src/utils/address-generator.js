@@ -5,7 +5,7 @@ const sendGiftCard = require('../services/send-giftcard')
 
 const bip38 = require('./bip38')
 
-const supportedCoins = [
+export const supportedCoins = [
     'BCH',
     'BTC',
     'BTG',
@@ -24,7 +24,7 @@ function generateKeyPair(passphrase, coin = 'BTC') {
     if (!supportedCoins.includes(coin)) return console.log('Wrong coin')
 
     const keyPair = coinkey.createRandom(coininfo(coin));
-    const {privateKey} = keyPair
+    const { privateKey } = keyPair
     const { versions } = coininfo(coin)
 
     const network = {
@@ -40,4 +40,4 @@ function generateKeyPair(passphrase, coin = 'BTC') {
     }
 }
 
-console.log(generateKeyPair('Random pass', 'LTC'))
+// console.log(generateKeyPair('Random pass', 'LTC'))
