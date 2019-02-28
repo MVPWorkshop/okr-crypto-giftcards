@@ -48,7 +48,7 @@
     </b-form-group>
     <hr>
     <h2 class="giftcard-side">Step 2/2: Delivery details</h2>
-    <!-- Paper card radio
+    <!-- Paper card radio -->
     <b-form-group label="How do you like to receive this gift card:">
       <b-form-radio
         value="PaperAndDigital"
@@ -60,7 +60,7 @@
         v-model="form.selectedReceiveType"
         name="some-radios"
       >Digital copy only</b-form-radio>
-    </b-form-group> -->
+    </b-form-group>
     <!--Country-->
     <b-form-group v-if="form.selectedReceiveType === 'PaperAndDigital'" label="Country:">
       <b-form-input v-model="form.country" required placeholder="Please enter country"/>
@@ -139,7 +139,7 @@ export default {
   data() {
     return {
       form: {
-        selectedDesignOption: "birthday",
+        selectedDesignOption: "",
         forWhom: "",
         passphrase: "",
         selectedCoin: "BTC",

@@ -49,10 +49,13 @@ export default {
           this.defaultBackground = '/default-placeholder.png'
           break;
       }
+      this.isGenerated = true;
     },
 
     sendGiftcard(event) {
       this.form = event;
+
+      if(!this.isGenerated) return this.error = 'Please generate giftcard first';
 
       if (!this.form.forWhom) return this.error = 'Please enter recepient';
       if (!this.form.passphrase) return this.error = 'Please enter passphrase';
@@ -68,22 +71,24 @@ export default {
         address,
         passphrase
       } = this.form;
-      saveGiftCard(
-        this.keyPair.publicKey,
-        email,
-        selectedCoin,
-        forWhom,
-        country,
-        city,
-        address
-      );
+      if(event.selectedReceiveType === 'PaperAndDigital'){
+        saveGiftCard(
+          this.keyPair.publicKey,
+          email,
+          selectedCoin,
+          forWhom,
+          country,
+          city,
+          address
+        );
+      }
       sendPassphraseEmail(email, forWhom, passphrase);
     }
   },
   data() {
     return {
       form: {
-        selectedDesignOption: "birthday",
+        selectedDesignOption: "",
         forWhom: "",
         passphrase: "",
         selectedCoin: "BTC",
@@ -99,6 +104,7 @@ export default {
         encryptedPrivateKey: ""
       },
       error: "",
+      isGenerated: false,
       defaultBackground: "/default-placeholder.png"
     };
   }
