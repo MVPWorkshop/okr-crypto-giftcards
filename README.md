@@ -1,33 +1,16 @@
-# okr-crypto-giftcards
+# Crypto Gift Cards
 
-## Project setup
-```
-yarn install
-```
+- OKR project by MVP Workshop
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## Dev info
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+* Project Setup - `yarn install`
+* Project Start - `yarn serve`
+* Project Build for production - `yarn build`
+* Lint code - `yarn lint`
 
-### Run your tests
-```
-yarn run test
-```
+## Services used
+- Mailgun `filip.jovakaric@mvpwrokshop.co` / `Filip123`
+- EmailJS `filip.jovakaric@mvpwrokshop.co` / `Filip123`
 
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Vue Bootstrap components
-[Vue Bootstrap](https://bootstrap-vue.js.org/docs/components/alert)
-
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## TODO
