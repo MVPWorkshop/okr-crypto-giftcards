@@ -2,12 +2,14 @@
   <b-container class="giftcard-cotainer">
     <b-row>
       <b-col md="4">
-        <div class="card giftcard-form">
-          <GiftCardForm @change-form="form = $event" class=""/>
+        <div class="card">
+          <GiftCardForm
+            @change-form="form = $event; imagesrc='https://github.com/atomiclabs/cryptocurrency-icons/blob/master/32/color/'+form.selectedCoin.toLowerCase()+'.png?raw=true'"
+          />
         </div>
       </b-col>
       <b-col md="8">
-        <Preview :form="form"/>
+        <Preview :form="form" :imagesrc="imagesrc"/>
       </b-col>
     </b-row>
   </b-container>
@@ -34,7 +36,8 @@ export default {
         country: "",
         city: "",
         email: ""
-      }
+      },
+      imagesrc:''
     };
   }
 };
