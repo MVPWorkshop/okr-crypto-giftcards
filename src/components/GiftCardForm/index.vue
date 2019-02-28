@@ -50,15 +50,15 @@
       >Digital copy only</b-form-radio>
     </b-form-group>
     <!--Country-->
-    <b-form-group label="Country:">
+    <b-form-group v-if="form.selectedReceiveType === 'PaperAndDigital'" label="Country:">
       <b-form-input v-model="form.country" required placeholder="Please enter country"/>
     </b-form-group>
     <!-- City -->
-    <b-form-group label="City:">
+    <b-form-group v-if="form.selectedReceiveType === 'PaperAndDigital'" label="City:">
       <b-form-input v-model="form.city" required placeholder="Please enter city"/>
     </b-form-group>
     <!-- Address -->
-    <b-form-group label="Address:">
+    <b-form-group v-if="form.selectedReceiveType === 'PaperAndDigital'" label="Address:">
       <b-form-input v-model="form.address" required placeholder="Please enter address"/>
     </b-form-group>
     <!-- Address -->
