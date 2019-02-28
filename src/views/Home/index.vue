@@ -7,7 +7,7 @@
         </div>
       </b-col>
       <b-col md="8">
-        <Preview :form="form" :imagesrc="imagesrc" :keyPair="keyPair"/>
+        <Preview :form="form" :imagesrc="imagesrc" :keyPair="keyPair" :defaultBackground="defaultBackground"/>
       </b-col>
     </b-row>
   </b-container>
@@ -37,6 +37,18 @@ export default {
         event.passphrase,
         event.selectedCoin
       );
+      switch (event.selectedDesignOption) {
+        case 'birthday':
+          this.defaultBackground = '/bday-preview-ver2.png'
+          break;
+        case 'graduate':
+          this.defaultBackground = '/graduate.png'
+          break;
+      
+        default:
+          this.defaultBackground = '/default-placeholder.png'
+          break;
+      }
     },
 
     sendGiftcard(event) {
@@ -81,12 +93,13 @@ export default {
         email: "",
         address: ""
       },
-      imagesrc: "",
+      imagesrc: "/icon-placeholder.png",
       keyPair: {
         publicKey: "",
         encryptedPrivateKey: ""
       },
       error: "",
+      defaultBackground: "/default-placeholder.png"
     };
   }
 };

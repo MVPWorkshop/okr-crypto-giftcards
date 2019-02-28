@@ -1,5 +1,6 @@
 <template class="test-class">
   <b-form class="gift-form">
+    <h2 class="giftcard-side">Step 1/2: Create card</h2>
     <!--Occasion-->
     <b-form-group label="Occasion:">
       <b-form-select v-model="form.selectedDesignOption" :options="designOptions"/>
@@ -46,7 +47,8 @@
       >Generate giftcard</b-button>
     </b-form-group>
     <hr>
-    <!-- Paper card radio -->
+    <h2 class="giftcard-side">Step 2/2: Delivery details</h2>
+    <!-- Paper card radio
     <b-form-group label="How do you like to receive this gift card:">
       <b-form-radio
         value="PaperAndDigital"
@@ -58,7 +60,7 @@
         v-model="form.selectedReceiveType"
         name="some-radios"
       >Digital copy only</b-form-radio>
-    </b-form-group>
+    </b-form-group> -->
     <!--Country-->
     <b-form-group v-if="form.selectedReceiveType === 'PaperAndDigital'" label="Country:">
       <b-form-input v-model="form.country" required placeholder="Please enter country"/>
@@ -112,12 +114,8 @@ const designOptions = [
     value: "birthday"
   },
   {
-    text: "New Year",
-    value: "newyear"
-  },
-  {
-    text: "Wedding",
-    value: "wedding"
+    text: "Graduate",
+    value: "graduate"
   }
 ];
 
@@ -198,6 +196,11 @@ export default {
     font-size: 0.9rem !important;
     line-height: 1.5rem !important;
   }
+.giftcard-side {
+  font-size: 1.2rem;
+  color: #c5c4df;
+  text-align: left;
+}
 
   .light-text {
     color: #969696;

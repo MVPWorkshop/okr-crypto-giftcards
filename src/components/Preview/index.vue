@@ -3,7 +3,7 @@
     <h1 class="giftcard-heading">Preview</h1>
     <h2 class="giftcard-side">Front Side</h2>
 
-    <div class="card outside">
+    <div class="card outside" :style="{backgroundImage: 'url(' + defaultBackground + ')' }">
       <div class="card-content">
         <div class="card-page">
           <div class="wbox back-wb">
@@ -65,6 +65,10 @@ export default {
     keyPair: {
       required: true,
       type: Object
+    },
+    defaultBackground: {
+      required: true,
+      type: String
     }
   }
 };
@@ -74,13 +78,13 @@ export default {
 .giftcard-side,
 .giftcard-heading {
   color: #c5c4df;
-  text-align: center;
+  text-align: left;
 }
 
 .giftcard-heading {
   font-weight: 700;
-  text-transform: uppercase;
   margin-bottom: 1rem;
+  font-size: 1.75rem;
 }
 
 .giftcard-side {
@@ -207,7 +211,6 @@ export default {
 }
 
 .card.outside {
-  background-image: url("/bday-preview-ver2.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
