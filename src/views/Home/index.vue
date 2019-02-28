@@ -2,8 +2,8 @@
   <b-container class="giftcard-cotainer">
     <b-row>
       <b-col md="4">
-        <div class="card">
-          <GiftCardForm @change-form="form = $event"/>
+        <div class="card giftcard-form">
+          <GiftCardForm @change-form="form = $event" class=""/>
         </div>
       </b-col>
       <b-col md="8">
@@ -41,7 +41,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.giftcard-cotainer {
-  margin: 2rem;
-}
+  .giftcard-cotainer {
+    margin: 2rem auto;
+  }
+
+  .giftcard-form {
+    background-color: #F8FAFF;
+    border-color: #E4E4F7;
+  }
 </style>
+xxx

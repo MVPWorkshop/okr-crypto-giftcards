@@ -1,4 +1,4 @@
-<template>
+<template class="test-class">
   <b-form class="gift-form">
     <!--Occasion-->
     <b-form-group label="Occasion:">
@@ -28,8 +28,8 @@
         placeholder="Leave personalized message for someone special to you"
       />
       <span class="mt-1 d-block">
-        <b>IMPORTANT:</b>Receiver needs to use this passphrase to access their wallet. Please write it down
-        exactly like here and keep it safe.
+        <b>IMPORTANT:</b><span class="light-text"> Receiver needs to use this passphrase to access their wallet. Please write it down
+        exactly like here and keep it safe.</span>
       </span>
     </b-form-group>
     <b-form-group label="Coin:">
@@ -66,7 +66,7 @@
       <b-form-input v-model="form.email" required placeholder="Please enter email"/>
     </b-form-group>
     <b-form-group>
-      <b-button block variant="primary" @click="$emit('change-form',form)">Create giftcard</b-button>
+      <b-button class="giftcard-button" block variant="primary" @click="$emit('change-form',form)">Create giftcard</b-button>
     </b-form-group>
   </b-form>
 </template>
@@ -162,7 +162,33 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.muted-text {
-  opacity: 0.5;
-}
+  .muted-text {
+    opacity: 0.5;
+  }
+  
+  ::placeholder { /* Edge */
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      color: #C5C4DF
+  }
+  .gift-form {
+
+    label,
+    span,
+    .col-form-label,
+    select {
+      font-size: 0.9rem !important;
+      line-height: 1.5rem !important;
+    }
+
+    .light-text{
+      color: #969696;
+      font-size: 13px;
+    }
+
+    .giftcard-button {
+      margin-top: 1rem;
+    }
+  }
+
 </style>
