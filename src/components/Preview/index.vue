@@ -7,7 +7,7 @@
       <div class="card-content">
         <div class="card-page">
           <div class="wbox back-wb">
-            <span class="box-title">YOUR BITCOIN WALLET</span>
+            <span class="box-title">YOUR {{ form.selectedCoin }} WALLET</span>
             <img :src="imagesrc" class="crypto-icon">
             <span class="info-text">Check funds on your wallet via this address</span>
             <qrcode-vue size="120" :value="keyPair.publicKey" class="qr-holder"/>

@@ -83,6 +83,8 @@
         @click="$emit('send-giftcard',form)"
       >Send giftcard</b-button>
     </b-form-group>
+
+    <p class="error-text">{{ error }}</p>
   </b-form>
 </template>
 
@@ -135,14 +137,15 @@ export default {
     BFormGroup,
     BForm
   },
+  props: ['error'],
   data() {
     return {
       form: {
-        selectedDesignOption: null,
+        selectedDesignOption: "birthday",
         forWhom: "",
         passphrase: "",
-        selectedCoin: null,
-        selectedReceiveType: GIFT_RECEIVE_TYPE.PaperAndDigital,
+        selectedCoin: "BTC",
+        selectedReceiveType: "PaperAndDigital",
         country: "",
         city: "",
         email: "",
@@ -203,6 +206,11 @@ export default {
 
   .giftcard-button {
     margin-top: 1rem;
+  }
+
+  .error-text {
+    color: red;
+    font-weight: 600;
   }
 }
 </style>

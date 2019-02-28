@@ -3,7 +3,7 @@
     <b-row>
       <b-col md="4">
         <div class="card">
-          <GiftCardForm @change-form="changeFormData" @send-giftcard="sendGiftcard"/>
+          <GiftCardForm :error="error" @change-form="changeFormData" @send-giftcard="sendGiftcard"/>
         </div>
       </b-col>
       <b-col md="8">
@@ -41,6 +41,12 @@ export default {
 
     sendGiftcard(event) {
       this.form = event;
+
+      if (!this.form.forWhom) return this.error = 'Please enter recepient';
+      if (!this.form.passphrase) return this.error = 'Please enter passphrase';
+      if (!this.form.email) return this.error = 'Please enter email';
+      if (!this.form.selectedCoin) return this.error = 'Please select a currency';
+
       const {
         email,
         selectedCoin,
@@ -65,11 +71,11 @@ export default {
   data() {
     return {
       form: {
-        selectedDesignOption: null,
+        selectedDesignOption: "birthday",
         forWhom: "",
         passphrase: "",
-        selectedCoin: null,
-        selectedReceiveType: null,
+        selectedCoin: "BTC",
+        selectedReceiveType: "PaperAndDigital",
         country: "",
         city: "",
         email: "",
@@ -79,7 +85,8 @@ export default {
       keyPair: {
         publicKey: "",
         encryptedPrivateKey: ""
-      }
+      },
+      error: "",
     };
   }
 };
