@@ -19,3 +19,6 @@
 - ETH support
 - UI polishing
 - Real Backend
+- Responsive design
+- Introduce two step process (generate card -> delivery details)
+- List popular platforms (in about section) that allow private key imports
