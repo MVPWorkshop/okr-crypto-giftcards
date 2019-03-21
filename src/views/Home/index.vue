@@ -7,7 +7,12 @@
         </div>
       </b-col>
       <b-col md="8">
-        <Preview :form="form" :imagesrc="imagesrc" :keyPair="keyPair" :defaultBackground="defaultBackground"/>
+        <Preview
+          :form="form"
+          :imagesrc="imagesrc"
+          :keyPair="keyPair"
+          :defaultBackground="defaultBackground"
+        />
       </b-col>
     </b-row>
   </b-container>
@@ -27,26 +32,26 @@ export default {
   name: "Home",
   components: { GiftCardForm, Preview, BRow, BCol, BContainer },
   methods: {
-    changeFormData(event) {
+    async changeFormData(event) {
       this.form = event;
       this.imagesrc =
         "https://github.com/atomiclabs/cryptocurrency-icons/blob/master/32/color/" +
         event.selectedCoin.toLowerCase() +
         ".png?raw=true";
-      this.keyPair = addressGenerator.generateKeyPair(
+      this.keyPair = await addressGenerator.generateKeyPair(
         event.passphrase,
         event.selectedCoin
       );
       switch (event.selectedDesignOption) {
-        case 'birthday':
-          this.defaultBackground = '/bday-preview-ver2.png'
+        case "birthday":
+          this.defaultBackground = "/bday-preview-ver2.png";
           break;
-        case 'graduate':
-          this.defaultBackground = '/graduate.png'
+        case "graduate":
+          this.defaultBackground = "/graduate.png";
           break;
-      
+
         default:
-          this.defaultBackground = '/default-placeholder.png'
+          this.defaultBackground = "/default-placeholder.png";
           break;
       }
       this.isGenerated = true;
@@ -55,12 +60,15 @@ export default {
     sendGiftcard(event) {
       this.form = event;
 
-      if(!this.isGenerated) return this.error = 'Please generate giftcard first';
+      if (!this.isGenerated)
+        return (this.error = "Please generate giftcard first");
 
-      if (!this.form.forWhom) return this.error = 'Please enter recepient';
-      if (!this.form.passphrase) return this.error = 'Please enter passphrase';
-      if (!this.form.email) return this.error = 'Please enter email';
-      if (!this.form.selectedCoin) return this.error = 'Please select a currency';
+      if (!this.form.forWhom) return (this.error = "Please enter recepient");
+      if (!this.form.passphrase)
+        return (this.error = "Please enter passphrase");
+      if (!this.form.email) return (this.error = "Please enter email");
+      if (!this.form.selectedCoin)
+        return (this.error = "Please select a currency");
 
       const {
         email,
@@ -71,7 +79,7 @@ export default {
         address,
         passphrase
       } = this.form;
-      if(event.selectedReceiveType === 'PaperAndDigital'){
+      if (event.selectedReceiveType === "PaperAndDigital") {
         saveGiftCard(
           this.keyPair.publicKey,
           email,

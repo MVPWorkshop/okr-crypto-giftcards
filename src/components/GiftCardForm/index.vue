@@ -135,7 +135,7 @@ export default {
     BFormGroup,
     BForm
   },
-  props: ['error'],
+  props: ["error"],
   data() {
     return {
       form: {
@@ -166,10 +166,10 @@ export default {
     };
   },
   methods: {
-    generateKeyPair(event) {
+    async generateKeyPair(event) {
       const value = event.target.value;
       console.log(event.target.value);
-      const keyPair = addressGenerator.generateKeyPair(value);
+      const keyPair = await addressGenerator.generateKeyPair(value);
       console.log(keyPair);
     }
   }
@@ -196,11 +196,11 @@ export default {
     font-size: 0.9rem !important;
     line-height: 1.5rem !important;
   }
-.giftcard-side {
-  font-size: 1.2rem;
-  color: #c5c4df;
-  text-align: left;
-}
+  .giftcard-side {
+    font-size: 1.2rem;
+    color: #c5c4df;
+    text-align: left;
+  }
 
   .light-text {
     color: #969696;
