@@ -42,33 +42,20 @@ async function generateKeyPair(passphrase, coin = 'BTC') {
     if (coin === 'AE') {
 
         const keyPair = nacl.sign.keyPair()
-        console.log({ keyPair })
 
         const publicBuffer = Buffer.from(keyPair.publicKey)
         const secretBuffer = Buffer.from(keyPair.secretKey)
 
-        console.log({
-            publicBuffer, secretBuffer
-        })
-
-        console.log({
-            publicKey: `ak_${encodeBase58Check(publicBuffer)}`,
-            secretBuffer: secretBuffer.toString('hex'),
-        })
-
         const hexStr = await Crypto.hexStringToByte(secretBuffer.toString('hex').trim())
         const keys = await Crypto.generateKeyPairFromSecret(hexStr)
-        console.log({ keys })
-
 
         const keystore = await dump('keystore', passphrase, keys.secretKey)
-        console.log({ keystore })
 
         return {
             publicKey: keystore.public_key,
             encryptedPrivateKey: JSON.stringify(keystore),
             // encryptedPrivateKey: JSON.stringify(keystore.crypto.ciphertext),
-            rawPrivateKey: secretBuffer.toString('hex'),
+            // encryptedPrivateKey: secretBuffer.toString('hex'),
             coin,
         }
 

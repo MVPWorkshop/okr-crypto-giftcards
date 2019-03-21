@@ -28,7 +28,7 @@
           <div class="wbox">
             <span class="box-title">YOUR PRIVATE KEY:</span>
             <qrcode-vue size="160" :value="keyPair.encryptedPrivateKey" class="qr-holder"/>
-            <span id="private-key">{{keyPair.encryptedPrivateKey}}</span>
+            <span id="private-key">{{form.selectedCoin === 'AE' ? '' : keyPair.encryptedPrivateKey}}</span>
             <span class="info-text">
               Please
               <strong>DO NOT</strong> Share Your Private Key With Anyone!
